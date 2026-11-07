@@ -114,6 +114,8 @@ nav.menu a:hover{color:var(--accent)}
 
 footer{border-top:1px solid var(--line);padding-block:28px;font-size:14px;color:var(--muted)}
 footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer .in a[href^="tel:"]{white-space:nowrap}
+@media (max-width:600px){footer .in a[href^="tel:"]{display:block}}
 
 /* изюминка: объёмная брусника */
 .sprig{width:100%;max-width:460px;justify-self:center;display:block;overflow:visible}

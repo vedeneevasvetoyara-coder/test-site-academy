@@ -93,6 +93,8 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 
 footer{padding-block:28px 40px;color:var(--muted);font-size:14px}
 footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer .in a[href^="tel:"]{white-space:nowrap}
+@media (max-width:600px){footer .in a[href^="tel:"]{display:block}}
 
 @media (max-width:820px){
   .doors{grid-template-columns:1fr;gap:20px}
