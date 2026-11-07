@@ -126,7 +126,22 @@ footer .in a[href^="tel:"]{white-space:nowrap}
   .door p{margin-bottom:12px}
   .door .go{margin-top:auto;padding:10px 14px;font-size:13px}
 }
-@media (prefers-reduced-motion:reduce){.sun-art .rays,.sprig .sway,.seal .ring,.tag{animation:none}.door,.btn{transition:none}}
+/* подсказка над арками и стрелка на кнопке */
+.ask{margin-top:30px;font:700 clamp(21px,2.6vw,26px)/1.25 var(--f-text);color:var(--ink)}
+.ask small{display:block;margin-top:4px;font:500 16px/1.4 var(--f-text);color:var(--muted)}
+.ask-arrow{display:block;width:26px;height:26px;margin:8px auto 0;color:var(--ink);animation:ask-down 2.4s ease-in-out infinite}
+@keyframes ask-down{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.door .go{padding:9px 10px 9px 20px}
+.door .go svg{box-sizing:border-box;width:32px;height:32px;padding:7px;border-radius:50%;background:#fff;color:var(--ink);animation:go-nudge 4s ease-in-out infinite}
+.door.mint .go svg{animation-delay:2s}
+@keyframes go-nudge{0%,70%,100%{transform:translateX(0)}80%{transform:translateX(5px)}90%{transform:translateX(-1px)}}
+.door:hover .go svg{animation:none;transform:translateX(4px)}
+@media (max-width:600px){
+  .ask{margin-top:18px}
+  .door .go{padding:7px 8px 7px 14px}
+  .door .go svg{width:28px;height:28px;padding:6px}
+}
+@media (prefers-reduced-motion:reduce){.sun-art .rays,.sprig .sway,.seal .ring,.tag,.ask-arrow,.door .go svg{animation:none}.door,.btn{transition:none}}
 /* обо мне и телефон */
 .me-sec{padding-block:40px}
 .me{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;max-width:900px;margin:0 auto}
@@ -187,7 +202,7 @@ footer .in a[href^="tel:"]{white-space:nowrap}
       <h1>Сайт, который приводит клиентов</h1>
       <p class="lead">Делаю сайты-визитки и лендинги для малого бизнеса и экспертов: от мастерской и салона до курсов и марафонов.</p>
       <div class="offer"><span class="tag lemon-t"><small>цена</small>от 3&nbsp;000&nbsp;₽</span><span class="tag mint-t"><small>срок</small>от 2 дней</span></div>
-      <p class="ask">Какой сайт нужен Вам?</p>
+      <p class="ask">Какой сайт нужен Вам?<small>Нажмите на арку</small><svg class="ask-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
       <div class="doors">
         <a class="door lemon" href="solnechnoe.html">
           <div class="art">
