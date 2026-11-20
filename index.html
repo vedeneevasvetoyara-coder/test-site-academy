@@ -6,11 +6,10 @@
 <title>Светлана - сайты для малого бизнеса и экспертов</title>
 <meta name="description" content="Создаю сайты для малого бизнеса и экспертов под ключ: лендинги и многостраничные сайты на Тильде, быстро и с вниманием к деталям. Примеры работ и контакты — на странице.">
 <meta name="yandex-verification" content="9cb7b5df6460811e" />
+<meta name="yandex-verification" content="522fa7b0a434405f" />
 <meta name="google-site-verification" content="r82RxzwecTFEUy08m-pgLsm2DYC83E44vyqDDBlW8Ls" />
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&family=Yeseva+One&display=swap">
+<link rel="stylesheet" href="fonts.css">
 <style>
 /* Макет: главная-развилка. Крупный заголовок, две арки-двери (лимонная и мятная) ведут на две страницы, ниже блок «Зацепил сайт?» и три факта */
 :root{
@@ -54,6 +53,11 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .mint-t{background:var(--mint);animation-duration:3.9s;animation-delay:-2.1s}
 .tag:hover{animation-duration:.9s}
 .mint-t small{color:#0B5C3A}
+/* кнопка выбора палитры */
+.palitra-link{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font:700 15px/1 var(--f-text);padding:16px 26px;border-radius:999px;text-decoration:none;background:var(--ink);color:#fff;transition:transform .15s}
+.palitra-link:hover{transform:translateY(-2px)}
+.palitra-link .dots{display:flex;gap:3px}
+.palitra-link .dots i{width:9px;height:9px;border-radius:50%;display:block}
 .ask{margin-top:34px;font:700 15px var(--f-text);color:var(--muted)}
 
 /* две двери */
@@ -213,7 +217,8 @@ footer .in a[href^="tel:"]{white-space:nowrap}
     <div class="in">
       <h1>Сайт, который приводит клиентов</h1>
       <p class="lead">Делаю сайты-визитки и лендинги для малого бизнеса и экспертов: от мастерской и салона до курсов и марафонов.</p>
-      <div class="offer"><span class="tag lemon-t"><small>цена</small>от 3&nbsp;000&nbsp;₽</span><span class="tag mint-t"><small>срок</small>от 2 дней</span></div>
+      <div class="offer"><span class="tag lemon-t"><small>цена</small>от 7&nbsp;500&nbsp;₽</span><span class="tag mint-t"><small>срок</small>от 2 дней</span></div>
+      <a class="palitra-link" href="palitra.html"><span class="dots" aria-hidden="true"><i style="background:#FFE600"></i><i style="background:#12BA6C"></i><i style="background:#1D5C8A"></i><i style="background:#E07856"></i></span>Выбрать палитру цвета сайта</a>
       <p class="ask">Выберите стиль общения<small>Нажмите на арку</small><svg class="ask-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
       <div class="doors">
         <a class="door lemon" href="solnechnoe.html">
@@ -277,6 +282,7 @@ footer .in a[href^="tel:"]{white-space:nowrap}
           <p>Такой же цепляющий сайт я сделаю для Вас - под Ваше дело, Ваших клиентов и Ваш характер.</p>
         </div>
         <a class="btn" href="https://t.me/Website_bystro" target="_blank" rel="noopener">Написать в Telegram</a>
+        <a class="btn" href="palitra.html" style="background:var(--lemon);color:var(--ink)">Выбрать палитру цвета</a>
       </div>
     </div>
   </section>

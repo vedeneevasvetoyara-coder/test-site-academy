@@ -1,15 +1,19 @@
 /* Помощник Светланы: окошко с вопросами перед разговором в мессенджере.
-   Ничего не сохраняет и никуда не отправляет сам: клиент пересылает ответы своими руками.
+   Ничего не сохраняет на сервере и никуда не отправляет сам:
+   ответы кладутся в localStorage (только в браузере гостя), чтобы перенестись
+   на страницу палитры, а клиент пересылает всё своими руками.
+   Имя и телефон не спрашивает — это сознательно (152-ФЗ).
    Если этот файл не загрузится, кнопки просто откроют Telegram. */
 (function () {
   'use strict';
 
   var TELEGRAM = 'https://t.me/Website_bystro';
   var MAX = 'https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg';
-  var NB = ' ';
+  var NB = ' ';
 
   var INTRO = 'Здравствуйте! Я помощник Светланы. Задам 5 коротких вопросов - это займёт около минуты. ' +
-    'Потом Вы отправите ответы Светлане в Telegram или Макс, и она ответит Вам сегодня.';
+    'Потом Вы отправите ответы Светлане в Telegram или Макс, и она ответит Вам сегодня. ' +
+    'А ещё можно будет сразу выбрать цвета будущего сайта.';
 
   var QUESTIONS = [
     {
@@ -40,9 +44,10 @@
       key: 'Вариант',
       title: 'Какой вариант Вам ближе?',
       options: [
-        'Визитка - 3' + NB + '000' + NB + '₽, 2' + NB + 'дня',
-        'Визитка с фото - 5' + NB + '000' + NB + '₽, 3' + NB + 'дня',
-        'Под ключ - 7' + NB + '000' + NB + '₽, 4' + NB + 'дня',
+        'Визитка - 7' + NB + '500' + NB + '₽, 2' + NB + 'дня',
+        'Визитка с фото - 10' + NB + '000' + NB + '₽, 3' + NB + 'дня',
+        'Лендинг - 12' + NB + '500' + NB + '₽, 3' + NB + 'дня',
+        'Под ключ - 15' + NB + '000' + NB + '₽, 4' + NB + 'дня',
         'Пока не знаю, нужен совет'
       ]
     }
@@ -58,13 +63,7 @@
   function theme() {
     var css = getComputedStyle(document.documentElement);
     var read = function (name) { return css.getPropertyValue(name).trim(); };
-    if (read('--accent')) {
-      return { main: read('--accent'), mainText: '#FFFFFF', soft: read('--soft'), ink: read('--ink'), muted: read('--muted'), line: read('--line'), radius: '999px', card: '22px', head: read('--f-head'), weight: '500', shadow: 'none' };
-    }
-    if (read('--sun')) {
-      return { main: read('--sun'), mainText: read('--ink'), soft: read('--sky'), ink: read('--ink'), muted: read('--muted'), line: read('--line'), radius: '14px', card: '18px', head: read('--f-head'), weight: '700', shadow: '4px 4px 0 ' + read('--ink') };
-    }
-    return { main: read('--lemon'), mainText: read('--ink'), soft: read('--panel'), ink: read('--ink'), muted: read('--muted'), line: read('--slate-light'), radius: '999px', card: '22px', head: read('--f-head'), weight: '700', shadow: 'none' };
+    return { main: read('--lemon') || '#FFE600', mainText: read('--ink') || '#1B2A41', soft: read('--panel') || '#EEF1F5', ink: read('--ink') || '#1B2A41', muted: read('--muted') || '#56627A', line: 'rgba(27,42,65,.2)', radius: '999px', card: '22px', head: read('--f-head') || 'sans-serif', weight: '700', shadow: 'none' };
   }
 
   function addStyles() {
@@ -75,8 +74,9 @@
       'width:min(520px,calc(100vw - 32px));max-height:min(720px,calc(100dvh - 32px));margin:auto;padding:0;border:0;border-radius:' + t.card + ';background:#fff;color:var(--pm-ink);font:400 16px/1.5 var(--f-text);overflow:auto;box-shadow:0 20px 60px rgba(20,30,50,.3)}' +
       '.pm::backdrop{background:rgba(20,30,50,.55)}' +
       '.pm *{box-sizing:border-box}' +
-      '.pm-in{padding:22px 24px 26px}' +
-      '.pm-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}' +
+      '.pm-in{padding:22px 24px 26px;display:flex;flex-direction:column;min-height:min(430px,calc(100dvh - 90px))}' +
+      '.pm-body{flex:1;display:flex;flex-direction:column}.pm-body>:last-child{margin-top:auto}' +
+      '.pm-top{display:flex;align-items:center;justify-content:flex-end;margin-bottom:2px}' +
       '.pm-top img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}' +
       '.pm-who{flex:1;min-width:0}.pm-who b{display:block;font-weight:700;line-height:1.25}.pm-who small{color:var(--pm-muted);font-size:14px}' +
       '.pm-x{width:44px;height:44px;flex:none;border:0;background:transparent;color:var(--pm-ink);font:400 26px/1 var(--f-text);cursor:pointer;border-radius:50%}' +
@@ -91,9 +91,9 @@
       '.pm-field{width:100%;margin-top:12px;padding:12px 14px;font:400 16px/1.4 var(--f-text);color:var(--pm-ink);background:#fff;border:2px solid var(--pm-line);border-radius:14px;resize:vertical}' +
       '.pm-field:focus{outline:0;border-color:var(--pm-ink)}' +
       '.pm-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}' +
-      '.pm-btn{display:inline-flex;flex:1 1 200px;align-items:center;justify-content:center;min-height:50px;padding:12px 18px;font:700 16px/1.2 var(--f-text);text-align:center;text-decoration:none;cursor:pointer;color:var(--pm-main-text);background:var(--pm-main);border:2px solid ' + (t.shadow === 'none' ? 'var(--pm-main)' : 'var(--pm-ink)') + ';border-radius:var(--pm-radius);box-shadow:' + t.shadow + '}' +
+      '.pm-btn{display:inline-flex;flex:1 1 200px;align-items:center;justify-content:center;min-height:50px;padding:12px 18px;font:700 16px/1.2 var(--f-text);text-align:center;text-decoration:none;cursor:pointer;color:var(--pm-main-text);background:var(--pm-main);border:2px solid var(--pm-main);border-radius:var(--pm-radius)}' +
       '.pm-btn[disabled]{opacity:.45;cursor:not-allowed}' +
-      '.pm-btn.pm-alt{color:var(--pm-ink);background:#fff;border-color:var(--pm-ink);box-shadow:none}' +
+      '.pm-btn.pm-alt{color:var(--pm-ink);background:#fff;border-color:var(--pm-ink)}' +
       '.pm-link{min-height:44px;padding:8px 4px;border:0;background:none;color:var(--pm-muted);font:600 15px/1.2 var(--f-text);text-decoration:underline;cursor:pointer}' +
       '.pm-sum{white-space:pre-wrap;overflow-wrap:anywhere;padding:14px 16px;margin:12px 0 0;background:var(--pm-soft);border-radius:14px;font-size:15px}' +
       '.pm-ok{min-height:24px;margin:12px 0 0;font-size:15px;font-weight:600}' +
@@ -155,6 +155,15 @@
       return navigator.clipboard.writeText(text).then(function () { return true; }, fallback);
     }
     return Promise.resolve(fallback());
+  }
+
+  /* ответы переносим на страницу палитры (только в браузере гостя) */
+  function saveToPalette() {
+    try {
+      localStorage.setItem('sv-anketa-text', messageText());
+      localStorage.setItem('sv-anketa', JSON.stringify({ answers: state.answers, comment: state.comment }));
+    } catch (e) { /* localStorage недоступен — просто переходим */ }
+    window.location.href = 'palitra.html';
   }
 
   function renderIntro() {
@@ -298,10 +307,10 @@
 
   function renderResult() {
     var text = messageText();
-    var title = el('h2', '', 'Готово! Отправьте ответы Светлане');
+    var title = el('h2', '', 'Готово! Вот Ваши ответы');
     title.tabIndex = -1;
     body.appendChild(title);
-    body.appendChild(el('p', 'pm-hint', 'Выберите, где Вам удобнее. Текст скопируется сам. Если чат откроется пустым, вставьте текст в поле сообщения и нажмите «Отправить».'));
+    body.appendChild(el('p', 'pm-hint', 'Проверьте текст. Можно сразу отправить его Светлане — или сначала выбрать цвета сайта, и они добавятся к сообщению автоматически.'));
     body.appendChild(el('div', 'pm-sum', text));
 
     var status = el('p', 'pm-ok');
@@ -321,9 +330,13 @@
     }
 
     var row = el('div', 'pm-row');
-    row.appendChild(sendLink('Отправить в Telegram', TELEGRAM + '?text=' + encodeURIComponent(text), 'pm-btn'));
-    row.appendChild(sendLink('Отправить в Макс', MAX, 'pm-btn pm-alt'));
+    row.appendChild(button('pm-btn', 'Дальше: выбрать цвета сайта', saveToPalette));
     body.appendChild(row);
+
+    var row2 = el('div', 'pm-row');
+    row2.appendChild(sendLink('Отправить в Telegram', TELEGRAM + '?text=' + encodeURIComponent(text), 'pm-btn'));
+    row2.appendChild(sendLink('Отправить в Макс', MAX, 'pm-btn pm-alt'));
+    body.appendChild(row2);
     body.appendChild(status);
 
     var more = el('div', 'pm-row');
@@ -336,6 +349,7 @@
     more.appendChild(button('pm-link', 'Начать заново', function () {
       state.answers = {};
       state.comment = '';
+      try { localStorage.removeItem('sv-anketa'); localStorage.removeItem('sv-anketa-text'); } catch (e) {}
       goTo(0);
     }));
     body.appendChild(more);
@@ -360,22 +374,12 @@
 
     var inner = el('div', 'pm-in');
     var top = el('div', 'pm-top');
-    var photo = document.createElement('img');
-    photo.src = 'img/svetlana.jpg';
-    photo.alt = '';
-    photo.width = 44;
-    photo.height = 44;
-    top.appendChild(photo);
-    var who = el('div', 'pm-who');
-    who.appendChild(el('b', '', 'Помощник Светланы'));
-    who.appendChild(el('small', '', 'автоматические вопросы, отвечает Светлана'));
-    top.appendChild(who);
     var close = button('pm-x', '×', function () { dialog.close(); });
     close.setAttribute('aria-label', 'Закрыть');
     top.appendChild(close);
     inner.appendChild(top);
 
-    body = el('div');
+    body = el('div', 'pm-body');
     inner.appendChild(body);
     dialog.appendChild(inner);
 
