@@ -139,16 +139,20 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .combo-card small{display:block;color:var(--muted);margin-top:10px;font-size:14px}
 
 /* финал: сообщение — отдельный экран */
-.final{padding:40px 0;min-height:100dvh;display:grid;align-content:center;background:var(--ink);color:#fff}
-.final .in{display:grid;gap:18px;justify-items:center;text-align:center;width:100%}
-.final h2{font-size:clamp(24px,3vw,38px);font-weight:800}
-.final p{color:#C9D0DA;max-width:72ch}
-.msg-preview{width:min(860px,100%);margin:0 auto;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:24px 28px;font:500 16px/1.65 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
+.final{padding:64px 0;background:var(--ink);color:#fff}
+.final .in{display:grid;gap:26px;justify-items:center;text-align:center;width:100%}
+.final-top{display:grid;gap:16px;justify-items:center}
+.final-foot{display:grid;gap:14px;justify-items:center}
+.final-foot .back-link{margin-top:0}
+.final h2{font-size:clamp(26px,3.2vw,42px);font-weight:800}
+.final p{color:#C9D0DA;max-width:72ch;font-size:clamp(15px,1.6vw,19px)}
+.msg-preview{width:min(900px,100%);margin:0 auto;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:24px 32px;font:500 15.5px/1.65 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
 .msg-preview b{color:#fff}
-.final .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
-.final .back-link{display:inline-block;margin-top:8px;padding:13px 24px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;text-decoration:none;font:700 15px var(--f-text);transition:border-color .15s,background .15s}
+.final .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.final .back-link{display:inline-block;margin-top:8px;padding:12px 24px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;text-decoration:none;font:700 15px var(--f-text);transition:border-color .15s,background .15s}
 .final .back-link:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.btn.big{padding:19px 30px;font-size:16px}
+.btn.big{padding:20px 34px;font-size:16.5px}
+.copy-note{font-size:15px}
 .copy-note{font-size:13.5px;color:#C9D0DA}
 footer{padding:22px 0;color:var(--muted);font-size:14px}
 footer .in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -273,15 +277,19 @@ html,body{overflow-x:hidden}
 
   <section class="final" id="final">
     <div class="in">
-      <h2>Проверьте сообщение и отправьте</h2>
-      <p id="finalHint">Сюда автоматически добавились Ваши ответы на вопросы и выбранные цвета. Если всё верно — отправьте одним нажатием.</p>
+      <div class="final-top">
+        <h2>Проверьте сообщение и отправьте</h2>
+        <p id="finalHint">Сюда автоматически добавились Ваши ответы на вопросы и выбранные цвета. Если всё верно — отправьте одним нажатием.</p>
+      </div>
       <div class="msg-preview" id="msgPreview"></div>
       <div class="row">
         <a class="btn mint big" id="tgLink" href="https://t.me/Website_bystro" target="_blank" rel="noopener">Отправить в Telegram</a>
         <a class="btn lemon big" id="maxLink" href="https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg" target="_blank" rel="noopener">Отправить в Макс</a>
       </div>
-      <p class="copy-note">Кнопка «Макс» откроет чат, а текст скопируется сам — останется вставить его в поле сообщения. <button class="chip-x" id="btnCopyMsg" type="button" style="color:#C9D0DA;text-decoration:underline;font-size:13.5px">Скопировать текст</button></p>
-      <a class="back-link" href="index.html">← Вернуться на главную</a>
+      <div class="final-foot">
+        <p class="copy-note">Кнопка «Макс» откроет чат, а текст скопируется сам — останется вставить его в поле сообщения. <button class="chip-x" id="btnCopyMsg" type="button" style="color:#C9D0DA;text-decoration:underline;font-size:13.5px">Скопировать текст</button></p>
+        <a class="back-link" href="index.html">← Вернуться на главную</a>
+      </div>
     </div>
   </section>
 </main>
