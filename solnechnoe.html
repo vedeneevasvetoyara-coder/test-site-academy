@@ -54,12 +54,14 @@ nav.menu a:hover{color:var(--ink)}
 .hero-text{padding-bottom:0}
 .hero h1{font-size:clamp(34px,4.6vw,56px);font-weight:700;letter-spacing:-.01em}
 .hero .lead{font-size:19px;color:var(--muted);max-width:42ch;margin:20px 0 30px}
-.facts{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.facts{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px}
 .fact{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:10px 16px;display:grid;line-height:1.25}
 .fact b{font:700 20px var(--f-head)}
 .fact span{font-size:13px;color:var(--muted)}
 .fact.price{background:var(--sun)}
-.seal-link{display:block;border-radius:50%;flex:none;margin-left:auto;transition:transform .2s}
+.seal-link{display:block;border-radius:50%;flex:none;transition:transform .2s}
+.facts-right{display:grid;grid-template-columns:auto auto;gap:12px;justify-content:start}
+.facts-right .seal-link{grid-column:1 / -1;justify-self:center}
 .seal-link:hover{transform:scale(1.06) rotate(-4deg)}
 .seal{width:112px;height:112px;display:block}
 .seal .ring{transform-origin:100px 100px;animation:spin 20s linear infinite}
@@ -233,9 +235,10 @@ html,body{overflow-x:hidden}
         <p class="lead">Услуги, цены, фото работ и кнопка «Позвонить». Вы присылаете материалы - остальное делаю я.</p>
         <div class="facts">
           <div class="fact price"><b>от 7&nbsp;500&nbsp;₽</b><span>цена известна сразу</span></div>
-          <div class="fact"><b>2 дня</b><span>до запуска</span></div>
-          <div class="fact"><b>3&nbsp;круга</b><span>правок до запуска</span></div>
-          <a class="seal-link" href="https://t.me/Website_bystro" target="_blank" rel="noopener" aria-label="Обсудить сайт в Telegram">
+          <div class="facts-right">
+            <div class="fact"><b>2 дня</b><span>до запуска</span></div>
+            <div class="fact"><b>3&nbsp;круга</b><span>правок до запуска</span></div>
+            <a class="seal-link" href="https://t.me/Website_bystro" target="_blank" rel="noopener" aria-label="Обсудить сайт в Telegram">
             <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
               <defs><path id="circ" d="M100 100m-72 0a72 72 0 1 1 144 0a72 72 0 1 1-144 0"/></defs>
               <circle cx="100" cy="100" r="96" fill="#FFE600" stroke="#1D3557" stroke-width="5"/>
@@ -243,6 +246,7 @@ html,body{overflow-x:hidden}
               <g transform="translate(70 70) scale(1.36)"><use href="#sun" width="44" height="44"/></g>
             </svg>
           </a>
+          </div>
         </div>
       </div>
 
