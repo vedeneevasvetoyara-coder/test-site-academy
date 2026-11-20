@@ -29,6 +29,8 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .logo span{font:400 28px var(--f-name)}
 .top-actions{display:flex;align-items:center;gap:10px}
 .phone-top{display:inline-flex;align-items:center;gap:8px;font:700 15px var(--f-text);text-decoration:none}
+.home-top{display:inline-flex;align-items:center;gap:7px;font:700 15px var(--f-text);text-decoration:none;color:var(--ink);padding:10px 16px;border:1.5px solid rgba(27,42,65,.18);border-radius:999px;transition:border-color .15s,background .15s}
+.home-top:hover{border-color:var(--ink);background:rgba(27,42,65,.05)}
 .phone-top svg{width:20px;height:20px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 15px/1 var(--f-text);padding:16px 24px;border-radius:999px;text-decoration:none;background:var(--slate);color:#fff;transition:transform .15s, box-shadow .15s;border:none;cursor:pointer}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(27,42,65,.18)}
@@ -142,6 +144,8 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .msg-preview{width:min(860px,100%);margin:0 auto;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 20px;font:500 14.5px/1.6 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
 .msg-preview b{color:#fff}
 .final .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.final .back-link{display:inline-block;margin-top:8px;padding:13px 24px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;text-decoration:none;font:700 15px var(--f-text);transition:border-color .15s,background .15s}
+.final .back-link:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 .btn.big{padding:19px 30px;font-size:16px}
 .copy-note{font-size:13.5px;color:#C9D0DA}
 footer{padding:22px 0;color:var(--muted);font-size:14px}
@@ -177,6 +181,7 @@ html,body{overflow-x:hidden}
   <div class="in">
     <a class="logo" href="index.html"><svg width="44" height="44" aria-hidden="true"><use href="#logo"/></svg><span>Светлана</span></a>
     <div class="top-actions">
+      <a class="home-top" href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>Главная</a>
       <a class="phone-top" href="tel:+79315831816" aria-label="Позвонить: +7 931 583-18-16"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>+7 931 583-18-16</span></a>
       <a class="btn top-btn" href="https://t.me/Website_bystro" target="_blank" rel="noopener">Обсудить проект</a>
     </div>
@@ -274,7 +279,7 @@ html,body{overflow-x:hidden}
         <a class="btn lemon big" id="maxLink" href="https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg" target="_blank" rel="noopener">Отправить в Макс</a>
       </div>
       <p class="copy-note">Кнопка «Макс» откроет чат, а текст скопируется сам — останется вставить его в поле сообщения. <button class="chip-x" id="btnCopyMsg" type="button" style="color:#C9D0DA;text-decoration:underline;font-size:13.5px">Скопировать текст</button></p>
-      <a class="back-link" href="index.html" style="color:#C9D0DA">← Вернуться на главную</a>
+      <a class="back-link" href="index.html">← Вернуться на главную</a>
     </div>
   </section>
 </main>
