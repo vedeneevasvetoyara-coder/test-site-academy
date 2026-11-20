@@ -93,10 +93,12 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .proof{margin-top:36px}
 .proof .in > div{background:var(--slate);color:#fff;border-radius:36px;padding:44px clamp(22px,5vw,60px);display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center}
 .proof h3{font-size:clamp(22px,2.6vw,32px);font-weight:700}
-.proof p{color:#E3E8EF;margin-top:10px;max-width:52ch}
+.proof p{color:#E3E8EF;margin-top:12px;font-size:clamp(17px,1.6vw,21px);line-height:1.5;max-width:56ch}
 .seal{width:130px;height:130px;display:block}
 .seal .ring{transform-origin:100px 100px;animation:spin 20s linear infinite}
-.proof .btn{background:var(--lemon);color:var(--ink)}
+.proof-btns{display:flex;flex-direction:column;gap:12px}
+.proof .btn.mint{background:var(--mint);color:#fff}
+.proof .btn.lemon{background:var(--lemon);color:var(--ink)}
 
 /* знакомство */
 .about{padding-block:64px 40px}
@@ -274,7 +276,7 @@ html,body{overflow-x:hidden}
   <section class="proof">
     <div class="in">
       <div>
-        <a href="https://t.me/Website_bystro" target="_blank" rel="noopener" aria-label="Обсудить Ваш сайт в Telegram">
+        <a href="#" aria-label="Обсудить Ваш сайт — открыть помощника">
           <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
             <defs><path id="circ" d="M100 100m-72 0a72 72 0 1 1 144 0a72 72 0 1 1-144 0"/></defs>
             <circle cx="100" cy="100" r="96" fill="#12BA6C"/>
@@ -284,10 +286,12 @@ html,body{overflow-x:hidden}
         </a>
         <div>
           <h3>Зацепил сайт?</h3>
-          <p>Такой же цепляющий сайт я сделаю для Вас - под Ваше дело, Ваших клиентов и Ваш характер.</p>
+          <p>Такой же цепляющий сайт я сделаю для Вас.<br>Под Ваше дело, Ваших клиентов и Ваш характер.</p>
         </div>
-        <a class="btn" href="https://t.me/Website_bystro" target="_blank" rel="noopener">Написать в Telegram</a>
-        <a class="btn" href="palitra.html" style="background:var(--lemon);color:var(--ink)">Выбрать палитру цвета</a>
+        <div class="proof-btns">
+          <a class="btn mint" href="https://t.me/Website_bystro" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn lemon" href="https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg" target="_blank" rel="noopener">Написать в Макс</a>
+        </div>
       </div>
     </div>
   </section>
