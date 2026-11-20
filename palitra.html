@@ -40,8 +40,8 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .hero .in{display:grid;grid-template-columns:1fr;gap:14px;justify-items:center;text-align:center}
 .kicker{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .kicker::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--lemon)}
-.hero h1{font-size:clamp(24px,3vw,36px);font-weight:800;margin-bottom:10px;max-width:30ch}
-.hero .lead{font-size:16.5px;color:var(--muted);max-width:62ch}
+.hero h1{font-size:clamp(28px,3.6vw,44px);font-weight:800;margin-bottom:10px}
+.hero .lead{font-size:clamp(16px,1.6vw,19px);color:var(--muted)}
 .hero .lead b{color:var(--ink)}
 .back-link{font:600 15px var(--f-text);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 
@@ -89,7 +89,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .pals{padding:30px 0 10px}
 .pal{margin-top:12px}
 .pal-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:0}
-.pal-head h2{font-size:clamp(17px,2vw,22px);font-weight:800}
+.pal-head h2{font-size:clamp(20px,2.4vw,28px);font-weight:800}
 .pal-head p{color:var(--muted);font-size:13px}
 .search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--panel);border-radius:999px;padding:6px 14px;min-width:180px}
 .search svg{width:17px;height:17px;opacity:.55;flex:0 0 auto}
@@ -123,7 +123,8 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 
 /* сочетания — отдельный экран */
 .combos{padding:60px 0;min-height:100dvh;display:grid;align-content:center}
-.combo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+.combos .in{width:100%}
+.combo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:18px}
 .combo-card{border:1.5px solid rgba(27,42,65,.12);border-radius:18px;padding:18px;background:#fff;cursor:pointer;text-align:left;transition:transform .15s, box-shadow .15s}
 .combo-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(27,42,65,.12)}
 .combo-card b{display:block;font:700 15px var(--f-text);margin-bottom:10px}
@@ -135,10 +136,10 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 
 /* финал: сообщение — отдельный экран */
 .final{padding:40px 0;min-height:100dvh;display:grid;align-content:center;background:var(--ink);color:#fff}
-.final .in{display:grid;gap:18px;justify-items:center;text-align:center}
-.final h2{font-size:clamp(21px,2.6vw,30px);font-weight:800}
-.final p{color:#C9D0DA;max-width:60ch}
-.msg-preview{width:min(680px,100%);text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 20px;font:500 14.5px/1.6 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
+.final .in{display:grid;gap:18px;justify-items:center;text-align:center;width:100%}
+.final h2{font-size:clamp(24px,3vw,38px);font-weight:800}
+.final p{color:#C9D0DA;max-width:72ch}
+.msg-preview{width:min(860px,100%);margin:0 auto;text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 20px;font:500 14.5px/1.6 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
 .msg-preview b{color:#fff}
 .final .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:4px}
 .btn.big{padding:19px 30px;font-size:16px}
@@ -233,17 +234,17 @@ html,body{overflow-x:hidden}
       <div class="pals">
       <div class="pal" id="pal1">
         <div class="pal-head">
-          <h2>Ваша палитра · 01–30</h2>
+          <h2>Спокойная палитра · 01–30</h2>
           <p>Спокойные и глубокие оттенки — как в шпаргалке, все 30 цветов</p>
-          <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="q1" placeholder="Номер или название…" aria-label="Поиск по Вашей палитре"></label>
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="q1" placeholder="Номер или название…" aria-label="Поиск по спокойной палитре"></label>
         </div>
         <div class="tubes" id="grid1"></div>
       </div>
 
       <div class="pal" id="pal2">
         <div class="pal-head">
-          <h2>Яркая международная палитра · 31–66</h2>
-          <p>Чистые цвета стандарта Tailwind: имена вида sky-500 понимают все ИИ-инструменты</p>
+          <h2>Яркая палитра · 31–66</h2>
+          <p>Чистые яркие цвета стандарта Tailwind: имена вида sky-500 понимают все ИИ-инструменты</p>
           <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="q2" placeholder="Номер или название…" aria-label="Поиск по яркой палитре"></label>
         </div>
         <div class="tubes" id="grid2"></div>
