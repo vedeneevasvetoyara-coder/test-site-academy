@@ -335,14 +335,14 @@ const ALL = [
 const BY_N = Object.fromEntries(ALL.map(c=>[c.n,c]));
 
 const COMBOS = [
- {t:"Спокойный и надёжный", ns:["02","15"]},
- {t:"Свежесть и доверие", ns:["06","42"]},
- {t:"Тепло и уют", ns:["08","19"]},
- {t:"Современный яркий", ns:["49","52"]},
- {t:"Премиум и глубина", ns:["28","21"]},
- {t:"Нежность", ns:["05","25"]},
- {t:"Энергия и рост", ns:["39","40"]},
- {t:"Стиль и интрига", ns:["66","59"]}
+ {t:"Спокойный и надёжный", ns:["02","15","16"]},
+ {t:"Свежесть и доверие", ns:["06","42","13"]},
+ {t:"Тепло и уют", ns:["08","19","20"]},
+ {t:"Современный яркий", ns:["02","49","52"]},
+ {t:"Премиум и глубина", ns:["03","21","28"]},
+ {t:"Нежность", ns:["05","63","62"]},
+ {t:"Энергия и рост", ns:["01","39","40"]},
+ {t:"Стиль и интрига", ns:["66","59","56"]}
 ];
 const ROLE_NAMES = ["фон","кнопки","заголовок и карточки"];
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg";
@@ -525,14 +525,13 @@ $("btnRandom").addEventListener("click",()=>{
    sync();
    if(++k>=7){
      clearInterval(iv);
-     const a=ALL[Math.floor(Math.random()*ALL.length)];
-     let b=ALL[Math.floor(Math.random()*ALL.length)];
-     while(b.n===a.n) b=ALL[Math.floor(Math.random()*ALL.length)];
-     chosen=[a.n,b.n];
-     if(Math.random()<0.4){
-       const lights=["01","02","03","05","06","08"];
-       chosen.push(lights[Math.floor(Math.random()*lights.length)]);
-     }
+     const lights=["01","02","03","04","05","06","07","08"];
+     const light=lights[Math.floor(Math.random()*lights.length)];
+     const accents=ALL.filter(c=>!lights.includes(c.n));
+     const a=accents[Math.floor(Math.random()*accents.length)];
+     let b=accents[Math.floor(Math.random()*accents.length)];
+     while(b.n===a.n) b=accents[Math.floor(Math.random()*accents.length)];
+     chosen=[light,a.n,b.n];
      sync(); paint(true);
    }
  },110);
