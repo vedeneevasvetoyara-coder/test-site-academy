@@ -14,13 +14,13 @@
   --f-head:"Unbounded","Arial Black",sans-serif; --f-text:"Onest","Segoe UI",system-ui,sans-serif; --f-name:"Yeseva One",Georgia,serif;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--f-text)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--f-text);font-size:max(16px,1.05vw)}
 h1,h2,h3{margin:0;text-wrap:balance;font-family:var(--f-head);line-height:1.12}
 p{margin:0}
 a{color:inherit}
 button{font-family:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-.in{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.in{margin:0 auto;padding-left:max(3vw,20px,env(safe-area-inset-left,0px));padding-right:max(3vw,20px,env(safe-area-inset-right,0px))}
 
 /* шапка */
 header{padding-block:10px}
@@ -40,7 +40,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .hero .in{display:grid;grid-template-columns:1fr;gap:14px;justify-items:center;text-align:center}
 .kicker{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--f-text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .kicker::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--lemon)}
-.hero h1{font-size:clamp(24px,3vw,36px);font-weight:800;margin-bottom:10px;max-width:30ch}
+.hero h1{font-size:clamp(24px,2.6vw,42px);font-weight:800;margin-bottom:10px;max-width:30ch}
 .hero .lead{font-size:16.5px;color:var(--muted);max-width:62ch}
 .hero .lead b{color:var(--ink)}
 .back-link{font:600 15px var(--f-text);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
@@ -65,7 +65,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .mini-nav .m-logo{display:flex;align-items:center;gap:7px}
 .mini-nav .m-dot{width:10px;height:10px;border-radius:50%;transition:background .6s ease}
 .mini-nav .m-links{display:flex;gap:12px;opacity:.75}
-.mini h3.m-title{font-size:clamp(19px,2.4vw,26px);font-weight:800;transition:color .6s ease;max-width:22ch}
+.mini h3.m-title{font-size:clamp(19px,2.2vw,30px);font-weight:800;transition:color .6s ease;max-width:22ch}
 .mini .m-text{font-size:13.5px;line-height:1.55;opacity:.8;max-width:48ch;transition:color .6s ease}
 .mini .m-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
 .m-btn{font:700 13px var(--f-text);padding:12px 20px;border-radius:999px;transition:background .6s ease,color .6s ease}
@@ -89,7 +89,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .pals{padding:30px 0 10px}
 .pal{margin-top:12px}
 .pal-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:0}
-.pal-head h2{font-size:clamp(17px,2vw,22px);font-weight:800}
+.pal-head h2{font-size:clamp(17px,1.8vw,26px);font-weight:800}
 .pal-head p{color:var(--muted);font-size:13px}
 .search{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--panel);border-radius:999px;padding:6px 14px;min-width:180px}
 .search svg{width:17px;height:17px;opacity:.55;flex:0 0 auto}
@@ -136,7 +136,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 /* финал: сообщение — отдельный экран */
 .final{padding:40px 0;min-height:100dvh;display:grid;align-content:center;background:var(--ink);color:#fff}
 .final .in{display:grid;gap:18px;justify-items:center;text-align:center}
-.final h2{font-size:clamp(21px,2.6vw,30px);font-weight:800}
+.final h2{font-size:clamp(21px,2.4vw,36px);font-weight:800}
 .final p{color:#C9D0DA;max-width:60ch}
 .msg-preview{width:min(680px,100%);text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:18px 20px;font:500 14.5px/1.6 var(--f-text);color:#EDF1F6;white-space:pre-wrap;overflow-wrap:anywhere}
 .msg-preview b{color:#fff}
