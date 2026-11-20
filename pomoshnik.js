@@ -71,10 +71,10 @@
     var style = document.createElement('style');
     style.textContent =
       '.pm{--pm-main:' + t.main + ';--pm-main-text:' + t.mainText + ';--pm-soft:' + t.soft + ';--pm-ink:' + t.ink + ';--pm-muted:' + t.muted + ';--pm-line:' + t.line + ';--pm-radius:' + t.radius + ';' +
-      'width:min(520px,calc(100vw - 32px));max-height:min(720px,calc(100dvh - 32px));margin:auto;padding:0;border:0;border-radius:' + t.card + ';background:#fff;color:var(--pm-ink);font:400 16px/1.5 var(--f-text);overflow:auto;box-shadow:0 20px 60px rgba(20,30,50,.3)}' +
+      'width:min(600px,calc(100vw - 32px));max-height:min(760px,calc(100dvh - 32px));margin:auto;padding:0;border:0;border-radius:' + t.card + ';background:#fff;color:var(--pm-ink);font:400 17px/1.55 var(--f-text);overflow:auto;box-shadow:0 20px 60px rgba(20,30,50,.3)}' +
       '.pm::backdrop{background:rgba(20,30,50,.55)}' +
       '.pm *{box-sizing:border-box}' +
-      '.pm-in{padding:22px 24px 26px;display:flex;flex-direction:column;min-height:min(430px,calc(100dvh - 90px))}' +
+      '.pm-in{padding:24px 28px 28px;display:flex;flex-direction:column}' +
       '.pm-body{flex:1;display:flex;flex-direction:column}.pm-body>:last-child{margin-top:auto}' +
       '.pm-top{display:flex;align-items:center;justify-content:flex-end;margin-bottom:2px}' +
       '.pm-top img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none}' +
@@ -389,12 +389,19 @@
     dialog.addEventListener('close', function () {
       document.documentElement.style.overflow = '';
     });
-    document.body.appendChild(dialog);
+    /* Помещаем окно в масштабируемый контейнер, чтобы оно увеличивалось вместе со страницей */
+    var scaleHost = document.querySelector('.page-scale') || document.body;
+    scaleHost.appendChild(dialog);
   }
 
   function open(event) {
     event.preventDefault();
     if (!dialog.open) {
+      /* Подгоняем максимальную высоту под масштаб страницы, чтобы окно не вылезало за экран */
+      var host = dialog.parentElement;
+      var z = 1;
+      if (host) z = parseFloat(getComputedStyle(host).zoom) || 1;
+      if (z > 1) dialog.style.maxHeight = Math.round((window.innerHeight - 48) / z) + 'px';
       document.documentElement.style.overflow = 'hidden';
       dialog.showModal();
       render();
