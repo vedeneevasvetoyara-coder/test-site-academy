@@ -14,7 +14,7 @@
 }
 
 *{box-sizing:border-box}
-body{margin:0;background:#E9E6E7;font:400 17px/1.7 var(--f-text);color:#2E2A2F;font-size:max(16px,1.05vw)}
+body{margin:0;background:#E9E6E7;font:400 17px/1.7 var(--f-text);color:#2E2A2F}
 h1,h2,h3{text-wrap:balance;margin:0;font-family:var(--f-head);font-weight:500;line-height:1.15}
 p{margin:0}
 a{color:inherit}
@@ -23,9 +23,9 @@ a{color:inherit}
 
 /* страница */
 .site{background:var(--bg);color:var(--ink);transition:background .35s,color .35s}
-.in{margin:0 auto;padding-left:max(3vw,20px, env(safe-area-inset-left, 0px));padding-right:max(3vw,20px, env(safe-area-inset-right, 0px))}
-section{padding-block:max(52px,5vw)}
-.sec-title{font-size:clamp(26px,2.8vw,44px);margin-bottom:12px}
+.in{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+section{padding-block:72px}
+.sec-title{font-size:clamp(28px,3.6vw,40px);margin-bottom:12px}
 .sec-lead{color:var(--muted);max-width:56ch}
 .soft{background:var(--soft)}
 
@@ -46,10 +46,10 @@ nav.menu a:hover{color:var(--accent)}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
 /* первый экран */
-.hero{padding-block:32px max(56px,6vw);background:radial-gradient(ellipse 70% 80% at 85% 30%, var(--glow), transparent 70%)}
+.hero{padding-block:32px 80px;background:radial-gradient(ellipse 70% 80% at 85% 30%, var(--glow), transparent 70%)}
 .soft{background:linear-gradient(180deg, var(--soft), color-mix(in srgb, var(--soft) 70%, var(--bg)))}
 .hero .in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(32px,3.8vw,66px);letter-spacing:-.01em}
+.hero h1{font-size:clamp(36px,5vw,58px);letter-spacing:-.01em}
 .hero .lead{font-size:19px;color:var(--muted);max-width:44ch;margin:22px 0 30px}
 .hero .facts{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
 .hero .facts b{display:block;font:500 26px var(--f-head);color:var(--ink)}
@@ -99,7 +99,7 @@ nav.menu a:hover{color:var(--accent)}
 
 /* отзыв */
 .review{max-width:760px;margin:40px auto 0;text-align:center;display:grid;gap:16px;justify-items:center}
-.review blockquote{margin:0;font:italic 400 clamp(21px,2.2vw,32px)/1.45 var(--f-head)}
+.review blockquote{margin:0;font:italic 400 clamp(22px,2.6vw,28px)/1.45 var(--f-head)}
 .review span{color:var(--muted);font-size:15px}
 
 /* финал */
@@ -107,7 +107,7 @@ nav.menu a:hover{color:var(--accent)}
 .seal{width:200px;height:200px;display:block}
 .seal .ring{transform-origin:100px 100px;animation:spin 22s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.final h2{font-size:clamp(28px,3.4vw,50px);margin-bottom:14px}
+.final h2{font-size:clamp(30px,4vw,44px);margin-bottom:14px}
 .final p{color:var(--muted);max-width:48ch;margin-bottom:26px}
 
 footer{border-top:1px solid var(--line);padding-block:28px;font-size:14px;color:var(--muted)}
@@ -224,7 +224,7 @@ footer{padding-bottom:96px}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq p{margin-top:10px;color:var(--muted);font-size:16px;line-height:1.6}
 /* обо мне и телефон */
-.me-sec{padding-block:max(36px,4vw)}
+.me-sec{padding-block:40px}
 .me{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;max-width:900px;margin:0 auto}
 .me img{width:180px;height:180px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 6px #FFFFFF,0 0 0 9px var(--me-ring, #12BA6C)}
 .me h2{font:700 clamp(26px,3vw,36px)/1.15 var(--f-head);margin:0}
@@ -264,6 +264,9 @@ footer{padding-bottom:96px}
 @media (max-width:480px){header .in{flex-wrap:nowrap;gap:10px}.logo span{font-size:21px}.logo svg{width:34px;height:34px}.top-actions{gap:8px}.top-actions .top-btn{padding:11px 13px;font-size:13px}.phone-top{padding:11px}}
 .card4 .inc{--inc-bg:var(--tint);--inc-fg:var(--third-deep);justify-self:start;margin-top:6px;font-style:normal;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--inc-bg);color:var(--inc-fg)}
 .plan .host{margin:4px 0 0;font-size:13px;line-height:1.4;color:var(--muted)}
+
+.page-scale{width:100%;max-width:1120px;margin:0 auto}
+html,body{overflow-x:hidden}
 </style>
 
 
@@ -280,7 +283,8 @@ footer{padding-bottom:96px}
   <symbol id="tg" viewBox="0 0 24 24"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 13 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="chat" viewBox="0 0 24 24"><path d="M4 19l1.3-3.9A8 8 0 1 1 8.6 18z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
 </svg>
-
+<body>
+<div class="page-scale">
 <main class="site" id="site" data-v="a">
 
   <header class="top">
@@ -530,5 +534,24 @@ footer{padding-bottom:96px}
     <span class="txt"><b>Светлана</b><small>отвечу сегодня</small></span>
   </a>
 </main>
+</div>
+</body>
 <script src="pomoshnik.js" defer></script>
+<script>
+/* Масштаб всей страницы: дизайн фиксированной ширины растёт пропорционально экрану */
+(function(){
+  var el=document.querySelector('.page-scale');
+  if(!el)return;
+  var base=1120;
+  function fit(){
+    var w=document.documentElement.clientWidth;
+    el.style.zoom=w>base?(w/base):1;
+  }
+  window.addEventListener('resize',fit);
+  window.addEventListener('orientationchange',fit);
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+})();
+</script>
+
 
