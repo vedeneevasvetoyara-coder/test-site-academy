@@ -124,7 +124,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .chip-x:hover{color:#E0144C}
 
 /* сочетания — отдельный экран */
-.combos{padding:60px 0;min-height:100dvh;display:grid;align-content:center}
+.combos{padding:60px 0;min-height:var(--vis,100dvh);display:grid;align-content:center}
 .combos .in{width:100%}
 .combos .pal-head h2{font-size:clamp(22px,2.6vw,32px)}
 .combos .pal-head p{font-size:clamp(15px,1.5vw,18px)}
@@ -139,7 +139,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .combo-card small{display:block;color:var(--muted);margin-top:10px;font-size:14px}
 
 /* финал: сообщение — отдельный экран */
-.final{padding:64px 0;background:var(--ink);color:#fff}
+.final{padding:64px 0;background:var(--ink);color:#fff;min-height:var(--vis,100dvh);display:grid;align-content:center}
 .final .in{display:grid;gap:26px;justify-items:center;text-align:center;width:100%}
 .final-top{display:grid;gap:16px;justify-items:center}
 .final-foot{display:grid;gap:14px;justify-items:center}
@@ -352,7 +352,11 @@ const COMBOS = [
  {t:"Премиум и глубина", ns:["03","21","28"]},
  {t:"Нежность", ns:["05","63","62"]},
  {t:"Энергия и рост", ns:["01","39","40"]},
- {t:"Стиль и интрига", ns:["66","59","56"]}
+ {t:"Стиль и интрига", ns:["66","59","56"]},
+ {t:"Морской бриз", ns:["06","46","16"]},
+ {t:"Весна и лёгкость", ns:["04","41","42"]},
+ {t:"Смелость и характер", ns:["02","32","28"]},
+ {t:"Уют осени", ns:["08","36","27"]}
 ];
 const ROLE_NAMES = ["фон","кнопки","заголовок и карточки"];
 const MAX_LINK = "https://max.ru/u/f9LHodD0cOKmZTJR2Hq6jo_UnEer7Ip-8JwHayHEPmbGhq7Ukyw1NXHAREg";
@@ -579,7 +583,10 @@ renderChips(); paint(); renderHint(); renderMessage();
   var base=1180;
   function fit(){
     var w=document.documentElement.clientWidth;
-    el.style.zoom=w>base?(w/base):1;
+    var z=w>base?(w/base):1;
+    el.style.zoom=z;
+    /* видимая высота в координатах масштабированной страницы — для полноэкранных секций */
+    document.documentElement.style.setProperty('--vis',(window.innerHeight/z)+'px');
   }
   window.addEventListener('resize',fit);
   window.addEventListener('orientationchange',fit);
