@@ -47,12 +47,13 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 .hero .lead b{color:var(--ink)}
 .back-link{font:600 15px var(--f-text);color:var(--muted);text-decoration:underline;text-underline-offset:3px}
 
-/* макет рядом с красками: слева макет (липнет при скролле), справа краски */
+/* слева макет (липнет при скролле), справа готовые сочетания, ниже — обе палитры */
 .work{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;width:100%;align-items:start}
 .stage{display:grid;gap:14px;justify-items:center;width:100%;position:sticky;top:16px}
-.work .pals{padding:0}
-.work .pal{margin-top:26px}
-.work .pal:first-child{margin-top:0}
+.work .side-col .combo-row{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));margin-top:14px}
+.pals-section{padding:6px 0 24px}
+.pals-section .pal{margin-top:26px}
+.pals-section .pal:first-child{margin-top:0}
 @media(max-width:1100px){
   .work{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
   .tubes{grid-template-columns:repeat(auto-fill,minmax(40px,1fr))}
@@ -246,7 +247,18 @@ html,body{overflow-x:hidden}
         </div>
       </div>
 
-      <div class="pals">
+      <div class="side-col">
+        <div class="pal-head">
+          <h2>Готовые сочетания</h2>
+          <p>Нажмите — подставится в макет</p>
+        </div>
+        <div class="combo-row" id="combos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pals-section">
+    <div class="in">
       <div class="pal" id="pal1">
         <div class="pal-head">
           <h2>Спокойная палитра · 01–30</h2>
@@ -265,17 +277,6 @@ html,body{overflow-x:hidden}
         <div class="tubes" id="grid2"></div>
         <p class="hint">Клик по тюбику — выбрать цвет. Клик по номеру под ним — скопировать код цвета.</p>
       </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="combos">
-    <div class="in">
-      <div class="pal-head">
-        <h2>Готовые сочетания</h2>
-        <p>Нажмите — подставится в макет</p>
-      </div>
-      <div class="combo-row" id="combos"></div>
     </div>
   </section>
 
