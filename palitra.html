@@ -50,7 +50,11 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 /* слева макет (липнет при скролле), справа готовые сочетания, ниже — обе палитры */
 .work{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;width:100%;align-items:start}
 .stage{display:grid;gap:14px;justify-items:center;width:100%;position:sticky;top:16px}
-.work .side-col .combo-row{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));margin-top:14px}
+.work .side-col .combo-row{grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.work .side-col .combo-card{padding:12px 12px 13px;border-radius:14px}
+.work .side-col .combo-card b{font-size:13.5px;line-height:1.25;margin-bottom:8px}
+.work .side-col .combo-strip{height:38px;border-radius:9px}
+.work .side-col .combo-card small{font-size:11px;line-height:1.45;margin-top:8px}
 .pals-section{padding:6px 0 24px}
 .pals-section .pal{margin-top:26px}
 .pals-section .pal:first-child{margin-top:0}
@@ -61,6 +65,7 @@ header .in{display:flex;align-items:center;justify-content:space-between;gap:14p
 @media(max-width:760px){
   .work{grid-template-columns:1fr}
   .stage{position:static}
+  .work .side-col .combo-row{grid-template-columns:repeat(2,1fr);gap:12px}
 }
 .preview{position:relative;width:min(760px,100%);border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(27,42,65,.16);border:1px solid rgba(27,42,65,.08);transition:background .8s ease;background:#EEF1F5}
 .blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.45;transition:background 1s ease;animation:drift 14s ease-in-out infinite alternate;pointer-events:none}
